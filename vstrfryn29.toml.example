@@ -1,0 +1,23 @@
+# this is used for creating some of the events like 39000,39001,39000
+pk_hex = "<private_key_hex>"
+
+# Put the full path to strfry here. If you have exported in your path you can leave it as is.
+# Example: If you don't have it exported youd do something like "/home/<user_name>/strfry_dir/strfry"
+# Also, we expect that your strfry.conf is one of the default locations
+# /etc/strfry.conf or in the same dir as your executable so that the strfry cmd automatically pulls in
+# the strfry.conf
+strfry_cmd_path = "strfry"
+
+# Group creation pow difficulty requirement
+# Use this if you want to require pow to create groups
+group_creation_difficulty = 0
+
+# Set this to reject events newer than the specified number milliseconds
+# Since we could trigger events to be created, we cant wait until
+# strfry validations after the write plugin runs
+reject_events_newer_than = 3000
+
+# Set this to reject events older than the specified number milliseconds
+# Since we could trigger events to be created, we cant wait until
+# strfry validations after the write plugin runs
+reject_events_older_than = 3000
