@@ -167,8 +167,8 @@ fn main() {
 					}
 
 					// Cleanup join/leave requests
-					_ := remove_join_request(group_id, pubkey_to_add, strfry_cmd)
-					_ := remove_leave_request(group_id, pubkey_to_add, strfry_cmd)
+					_ := remove_join_request(group_id, pubkey_to_remove, strfry_cmd)
+					_ := remove_leave_request(group_id, pubkey_to_remove, strfry_cmd)
 
 					accept(event_id)
 					continue
@@ -277,54 +277,54 @@ fn main() {
 				}
 				9006 { // set-role : TODO
 
-					if group_exists(group_id, strfry_cmd) == false {
-						reject('${group_id} does not exsit', event_id)
-						continue
-					}
+					// if group_exists(group_id, strfry_cmd) == false {
+					// 	reject('${group_id} does not exsit', event_id)
+					// 	continue
+					// }
 
-					requestor_role := has_role_power(group_id, pubkey, strfry_cmd)
+					// requestor_role := has_role_power(group_id, pubkey, strfry_cmd)
 
-					if requestor_role.power() < GroupRole.admin.power() {
-						reject('${pubkey} does not have permission to set-role for group ${group_id}', event_id)
-						continue
-					}
+					// if requestor_role.power() < GroupRole.admin.power() {
+					// 	reject('${pubkey} does not have permission to set-role for group ${group_id}', event_id)
+					// 	continue
+					// }
 
-					requested_role_entry := extract_role_from_tags(input_msg.event.tags)
-					if requested_role_entry.len != 3 {
-						reject('Missing required fields to set-role', event_id)
-						continue
-					}
+					// requested_role_entry := extract_role_from_tags(input_msg.event.tags)
+					// if requested_role_entry.len != 3 {
+					// 	reject('Missing required fields to set-role', event_id)
+					// 	continue
+					// }
 
-					requested_role := group_role_from_string(requested_role_entry[2])
-					if requested_role == GroupRole.member { // This means no valid role found
-						reject('role not valid', event_id)
-						continue
-					}
+					// requested_role := group_role_from_string(requested_role_entry[2])
+					// if requested_role == GroupRole.member { // This means no valid role found
+					// 	reject('role not valid', event_id)
+					// 	continue
+					// }
 
-					if requested_role.power() > requestor_role.power() {
-						reject('Cannot set-role above your role', event_id)
-						continue
-					}
+					// if requested_role.power() > requestor_role.power() {
+					// 	reject('Cannot set-role above your role', event_id)
+					// 	continue
+					// }
 
-					pubkey_to_modify := requested_role_entry[1]
-					if vnostr.valid_public_key_hex(pubkey_to_modify) == false {
-						reject('pubkey not valid', event_id)
-						continue
-					}
+					// pubkey_to_modify := requested_role_entry[1]
+					// if vnostr.valid_public_key_hex(pubkey_to_modify) == false {
+					// 	reject('pubkey not valid', event_id)
+					// 	continue
+					// }
 
-					// who are we changing?
-					pubkey_to_modify_role := has_role_power(group_id, pubkey_to_modify, strfry_cmd)
-					if requested_role.power() < pubkey_to_modify_role.power() {
-						// No beuno
-						reject('Cannot set-role of pubkey above your role', event_id)
-						continue
-					}
+					// // who are we changing?
+					// pubkey_to_modify_role := has_role_power(group_id, pubkey_to_modify, strfry_cmd)
+					// if requested_role.power() < pubkey_to_modify_role.power() {
+					// 	// No beuno
+					// 	reject('Cannot set-role of pubkey above your role', event_id)
+					// 	continue
+					// }
 
-					if pubkey_to_modify_role == GroupRole.member {
-						// Just add to admins list
-					} else {
-						// Need to find the entry and replace it
-					}
+					// if pubkey_to_modify_role == GroupRole.member {
+					// 	// Just add to admins list
+					// } else {
+					// 	// Need to find the entry and replace it
+					// }
 
 					reject('functionality not implemented yet', event_id)
 					continue
