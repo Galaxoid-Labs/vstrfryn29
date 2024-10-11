@@ -124,3 +124,4 @@ sudo systemctl restart caddy
 
 echo "Script execution completed!"
 echo "Now simply run strfry relay to start the relay. You'll probably want to use something like screen or setup a service to run this in the background"
+echo "If strfry relay doesnt work try source ~/.bashrc first"
