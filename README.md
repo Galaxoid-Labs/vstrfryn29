@@ -6,6 +6,9 @@
 - Start with a fresh Ubuntu VM
 - Point a domain to your server. You'll need this domain name for the setup
 
+By the end of the setup you will have a NIP-29 relay running with ssl at your domain.
+
+
 ```bash
 curl -O https://raw.githubusercontent.com/Galaxoid-Labs/vstrfryn29/refs/heads/main/easy_setup.sh
 chmod +x easy_setup.sh
