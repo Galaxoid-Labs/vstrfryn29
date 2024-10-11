@@ -2,34 +2,32 @@
 
 ![V Language](https://img.shields.io/badge/language-V-blue.svg)
 
-This module depends on [ismyhc.vnostr](https://github.com/ismyhc/vnostr) and [ismyhc.vsecp256k1](https://github.com/ismyhc/vsecp256k1)
-
-#### You'll need to install the following libraries:
-- automake
-- libtool
-- vlang
-
-### Ubuntu
-`sudo apt-get install automake libtool`
-
-### Vlang install instructions 
-```bash
-git clone https://github.com/vlang/v
-cd v
-make
-```
-
-### Then you'll want to add v to your path
-`export PATH="$HOME/Development/Tools/v:$PATH"` Or whever your path to v bin is.
-
-### Now compile the vstrfryn29 into a binary
-- In the directory of where you cloned this repo
-- First you'll pull the dependencies
-- Next you will compile the vsecp256k1 lib
-- Build your vstrfryn29 binary
+### Quickstart - The easy way
+- Start with a fresh Ubuntu VM
+- Point a domain to your server. You'll need this domain name for the setup
 
 ```bash
-v install
-v run ~/.vmodules/<user_name>/vsecp256k1/build.vsh
-v .
+curl -O https://raw.githubusercontent.com/Galaxoid-Labs/vstrfryn29/refs/heads/main/easy_setup.sh
+chmod +x easy_setup.sh
+./easy_setup.sh
 ```
+
+This will ask you handful of questions. Relay name, domain name, etc. It will also ask for prvate key hex. This will be nostr key that you want to use for the relay.
+
+Once the script finishes you should be able to simply run
+
+```bash
+strfry relay
+```
+
+If you have issues you may need to reload your ~/.bashrc
+
+```bash
+source ~/.bashrc
+```
+
+You'll likely also want to either use something like `screen` or setup a system service to run your relay. Its also worth notting you'll need to lock down your server at somepoint as well.
+
+### Compile and build from source
+
+More on this later. Its not difficult, but needs a little more attention. Stay tuned.
