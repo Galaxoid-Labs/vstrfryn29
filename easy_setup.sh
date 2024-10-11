@@ -27,6 +27,11 @@ while true; do
     fi
 done
 
+# the plugin is reliant on UTC time
+sudo timedatectl set-timezone UTC
+
+sudo apt install -y zip libsecp256k1-dev
+
 # Download zip file (update with the actual URL)
 ZIP_URL="https://github.com/Galaxoid-Labs/vstrfryn29/releases/download/0.1.0-alpha/relay.zip"
 DOWNLOAD_PATH="/tmp/relay.zip"
