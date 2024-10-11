@@ -31,3 +31,7 @@ You'll likely also want to either use something like `screen` or setup a system 
 ### Compile and build from source
 
 More on this later. Its not difficult, but needs a little more attention. Stay tuned.
+
+### TODO
+- Setting roles does not work yet. Im working on this
+- You can only set groups to open/close and public. Private groups are not supported yet as strfry doesnt support AUTH yet
